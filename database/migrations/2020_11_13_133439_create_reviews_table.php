@@ -4,22 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
-{
+class CreateReviewsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('reviews', function (Blueprint $table) {
+    public function up() {
+        Schema::create( 'reviews', function ( Blueprint $table ) {
             $table->id();
-            $table->string('app');
-            $table->string('sentiment', 100);
-            $table->double('sentiment_polarity');
-            $table->double('sentiment_subjectivity');
-        });
+            $table->string( 'app' );
+            $table->text( 'translated_review' );
+            $table->string( 'sentiment' );
+            $table->string( 'sentiment_polarity' );
+            $table->string( 'sentiment_subjectivity' );
+        } );
     }
 
     /**
@@ -27,8 +26,7 @@ class CreateReviewsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('app_reviews');
+    public function down() {
+        Schema::dropIfExists( 'app_reviews' );
     }
 }

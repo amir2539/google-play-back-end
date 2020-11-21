@@ -45,4 +45,6 @@ class App extends Model {
         'current_version',
         'android_version',
     ];
+
+
 }

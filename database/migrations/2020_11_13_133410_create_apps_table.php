@@ -13,14 +13,14 @@ class CreateAppsTable extends Migration {
     public function up() {
         Schema::create( 'apps', function ( Blueprint $table ) {
             $table->id();
-            $table->string( 'name' )->unique();
+            $table->string( 'name' );
             $table->string( 'category' );
             $table->double( 'rating' );
             $table->integer( 'reviews' );
-            $table->string( 'size', 6 );
+            $table->string( 'size' );
             $table->string( 'installs' );
-            $table->string('type', 6);
-            $table->string('price', 6);
+            $table->string('type');
+            $table->string('price');
             $table->string('content_rating');
             $table->string('genres');
             $table->string('last_updated');
