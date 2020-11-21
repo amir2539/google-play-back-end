@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -46,5 +47,9 @@ class App extends Model {
         'android_version',
     ];
 
+    // Scopes
+    public function scopeAppName( Builder $query, $name ) {
+        return $query->where( "name", $name );
+    }
 
 }
