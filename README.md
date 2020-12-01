@@ -53,12 +53,14 @@ You should have installed php and composer
 
 There 2 api for getting all apps and single app reviews and details
 
-1- Route "/" : 1- 10 most downloaded apps
-                2- 10 best rated apps
-                3- all apps with sort and pagination
+1- Route "/" : 
+1- 10 most downloaded apps <br/>
+2- 10 best rated apps<br/>
+3- all apps with sort and pagination
 
 
-2- Route "/{app}" : returns app details and reviews with pagination
+2- Route "/{app}" : <br/>
+returns app details and reviews with pagination
 
 
 <!-- CONTACT -->
