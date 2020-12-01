@@ -47,13 +47,12 @@ You should have installed php and composer
    composer install
 
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 There 2 api for getting all apps and single app reviews and details
 
-1- Route "/" : 
+1- Route "/" :  <br/>
 1- 10 most downloaded apps <br/>
 2- 10 best rated apps<br/>
 3- all apps with sort and pagination
