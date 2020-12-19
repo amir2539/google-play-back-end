@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,6 @@ use Illuminate\Support\Facades\Route;
 //} );
 
 
-Route::get( '/', [ \App\Http\Controllers\HomeController::class, 'index' ] );
-Route::get( '/reviews/{app}', [ \App\Http\Controllers\SingleAppController::class, 'getApp' ] );
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/reviews/{app}', [\App\Http\Controllers\SingleAppController::class, 'getApp']);
+Route::post('reviews/{app}/add', [ReviewController::class, 'addComment']);
