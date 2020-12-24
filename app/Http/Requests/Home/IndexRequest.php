@@ -11,16 +11,20 @@ use Illuminate\Foundation\Http\FormRequest;
  *
  * @property string $orderby
  * @property string $order
- * @property int    $per_page
- * @property  int   $page
+ * @property int $per_page
+ * @property  int $page
+ * @property string $filter
+ * @property string $filter_value
  */
-class IndexRequest extends FormRequest {
+class IndexRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -29,11 +33,14 @@ class IndexRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            'orderby'  => 'nullable|string',
-            'order'    => 'nullable|string',
+            'orderby' => 'nullable|string',
+            'order' => 'nullable|string',
             'per_page' => 'nullable|integer',
+            'filter' => 'nullable|string',
+            'filter_value' => 'nullable|string'
         ];
     }
 }
