@@ -22,4 +22,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/reviews/{app}', [\App\Http\Controllers\SingleAppController::class, 'getApp']);
-Route::post('reviews/{app}/add', [ReviewController::class, 'addComment']);
+Route::post('/reviews/add', [ReviewController::class, 'addComment']);

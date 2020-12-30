@@ -23,12 +23,17 @@ class HomeController extends Controller
 
         $per_page = $request->per_page > 1 ? $request->per_page : 20;
 
-        $sort = in_array($request->orderby, $orders) ? $request->orderby : 'installs';
+        $sort  = in_array($request->orderby, $orders) ? $request->orderby : 'installs';
         $order = $request->order == 'ASC' ? 'ASC' : 'DESC';
 
 
         /** @var LengthAwarePaginator $all_apps */
-        $all_apps = App::groupBy('name')->orderBy($sort, $order);
+        $all_apps = App::orderBy($sort, $order);
+
+        //set search
+        if (isset($request->search)) {
+            $all_apps = $all_apps->where('name', 'like', '%'.$request->search.'%');
+        }
 
         if (isset($request->filter, $request->filter_value)) {
             $filter_list = [
@@ -42,12 +47,14 @@ class HomeController extends Controller
             }
         }
 
+
         $all_apps = $all_apps->paginate($per_page);
+
         $all_apps = IndexResource::collection($all_apps);
 
 
         //get categories and genres
-        if (!Cache::has('index_categories')) {
+        if ( ! Cache::has('index_categories')) {
             $categories = App::select('category')->groupBy('category')->get()->pluck('category');
 
             Cache::put('index_categories', $categories, 60 * 60); //1 Hour cache
@@ -57,7 +64,7 @@ class HomeController extends Controller
         }
 
         //genres
-        if (!Cache::has('index_genres')) {
+        if ( ! Cache::has('index_genres')) {
             $genres = App::select('genres')->groupBy('genres')->get()->pluck('genres');
 
             Cache::put('index_genres', $genres, 60 * 60); //1 Hour cache
@@ -67,7 +74,7 @@ class HomeController extends Controller
         }
 
 
-        if (!Cache::has('index_best_apps')) {
+        if ( ! Cache::has('index_best_apps')) {
             $best_apps = App::groupBy('name')->orderByRaw("(reviews/rating) DESC")->get()->take(10);
             $best_apps = IndexResource::collection($best_apps);
 
@@ -76,7 +83,7 @@ class HomeController extends Controller
             $best_apps = Cache::get('index_best_apps');
         }
 
-        if (!Cache::has('index_most_download')) {
+        if ( ! Cache::has('index_most_download')) {
             $most_download = App::groupBy('name')->orderByRaw("length(installs) DESC")->get()->take(10);
             $most_download = IndexResource::collection($most_download);
 
@@ -87,11 +94,11 @@ class HomeController extends Controller
 
 
         return [
-            'all_apps' => $all_apps,
-            'best_apps' => $best_apps,
+            'all_apps'      => $all_apps,
+            'best_apps'     => $best_apps,
             'most_download' => $most_download,
-            'categories' => $categories,
-            'genres' => $genres
+            'categories'    => $categories,
+            'genres'        => $genres
         ];
     }
 }

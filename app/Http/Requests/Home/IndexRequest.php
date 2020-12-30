@@ -15,6 +15,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property  int $page
  * @property string $filter
  * @property string $filter_value
+ * @property string $search
  */
 class IndexRequest extends FormRequest
 {
@@ -36,11 +37,12 @@ class IndexRequest extends FormRequest
     public function rules()
     {
         return [
-            'orderby' => 'nullable|string',
-            'order' => 'nullable|string',
-            'per_page' => 'nullable|integer',
-            'filter' => 'nullable|string',
-            'filter_value' => 'nullable|string'
+            'orderby'      => 'nullable|string',
+            'order'        => 'nullable|string',
+            'per_page'     => 'nullable|integer',
+            'filter'       => 'nullable|string',
+            'filter_value' => 'nullable|string',
+            'search'       => 'nullable|string'
         ];
     }
 }

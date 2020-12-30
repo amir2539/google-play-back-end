@@ -13,7 +13,7 @@ class ReviewController extends Controller
     {
 
         /** @var App $app */
-        $app = App::AppName($request->app)->first;
+        $app = App::AppName($request->app)->first();
 
         $credentials = $request->only('app', 'review', 'sentiment', 'sentiment_subjectivity', 'sentiment_polarity');
         Review::create($credentials);

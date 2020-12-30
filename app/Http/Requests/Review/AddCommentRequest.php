@@ -36,7 +36,7 @@ class AddCommentRequest extends FormRequest
         return [
             'app' => 'required|string|min:1|exists:apps,name',
             'review' => 'required|string|min:3',
-            'sentiment' => 'required|numeric',
+            'sentiment' => 'required|string',
             'sentiment_polarity' => 'required|numeric',
             'sentiment_subjectivity' => 'required|numeric',
         ];
