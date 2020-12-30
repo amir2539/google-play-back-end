@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AppTest.testExample" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" singleton="false">
+    <CommandLine>
+      <PhpTestInterpreterSettings>
+        <option name="interpreterName" value="PHP 7.4" />
+      </PhpTestInterpreterSettings>
+    </CommandLine>
+    <TestRunner class="Tests\Feature\AppTest" configuration_file="$PROJECT_DIR$/phpunit.xml" coverage_engine="PHPDBG" file="$PROJECT_DIR$/tests/Feature/AppTest.php" method="testExample" scope="Method" />
+    <method v="2" />
+  </configuration>
+</component>
